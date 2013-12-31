@@ -34,9 +34,23 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Inherit from toro device
 $(call inherit-product, device/samsung/toro/device_vzw.mk)
 
+# Get the long list of APNs
+$(call inherit-product, vendor/cna/configs/apns.mk)
+
+# Release name
+PRODUCT_RELEASE_NAME := GN-VZW
+
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := full_toro
 PRODUCT_DEVICE := toro
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on Toro
+PRODUCT_BRAND := google
+PRODUCT_MODEL := Galaxy Nexus
+PRODUCT_MANUFACTURER := Samsung
 PRODUCT_RESTRICT_VENDOR_FILES := false
+
+#Set build fingerprint / ID / Product Name ect.
+PRODUCT_BUILD_PROP_OVERRIDES += \
+	PRODUCT_NAME=mysid \
+	BUILD_FINGERPRINT="google/mysid/toro:4.2.2/JDQ39/573038:user/release-keys" \
+	PRIVATE_BUILD_DESC="mysid-user 4.2.2 JDQ39 573038 release-keys"
+
